@@ -1,0 +1,7 @@
+services:
+  static-web-server:
+    build:
+      context: ./static-web-server
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
