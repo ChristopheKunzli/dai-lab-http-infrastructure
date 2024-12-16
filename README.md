@@ -2,6 +2,15 @@ Künzli Christophe, Gerber Tristan
 
 # HTTP - infrastructure
 
+## Step 0: Github & Readme
+The notes for each step will be in this markdown file.  
+
+### Setting up git
+To import our project, you can do the command:  
+```code
+git clone https://github.com/ChristopheKunzli/dai-lab-http-infrastructure.git
+```
+
 ## Step 1: Static Web site
 
 ## Step 2: Docker compose
