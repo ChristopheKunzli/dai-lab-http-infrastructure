@@ -35,8 +35,8 @@ This command is used to create the docker image sous le nom de **static-web-serv
 docker run -d -p 80:80 static-web-server
 ```
 
-with ```-d``` meaning ```detach```, to run in the background, and ```-p``` means that we specify the port (in our case,
-80)
+with ```-d``` meaning ```detach```, to run in the background, and ```-p``` means that we specify the port (in our
+case, 80)
 
 ## Step 2: Docker compose
 
@@ -63,7 +63,8 @@ Run with:
 ```code
 docker-compose up -d
 ```
-At this point, we can open a browser and search ```localhost:80```. You should see the web site.
+
+At this point, we can open a browser and search ```localhost:80```. You should see the website.
 
 Stop with:
 
