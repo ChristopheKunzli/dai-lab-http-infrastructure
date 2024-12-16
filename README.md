@@ -1,4 +1,4 @@
-Kunzli Christophe, Gerber Tristan
+Künzli Christophe, Gerber Tristan
 
 # HTTP - infrastructure
 
