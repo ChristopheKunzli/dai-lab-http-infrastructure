@@ -5,3 +5,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+
+  api-server:
+    build:
+      context: ./httpserver
+      dockerfile: Dockerfile
+    ports:
+      - "7000:7000"
