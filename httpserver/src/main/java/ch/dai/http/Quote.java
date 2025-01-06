@@ -1,12 +1,10 @@
 package ch.dai.http;
 
 public class Quote {
-    public int id;
     public String author;
     public String content;
 
-    public Quote(int id, String author, String content) {
-        this.id = id;
+    public Quote(String author, String content) {
         this.author = author;
         this.content = content;
     }
