@@ -76,6 +76,15 @@ docker-compose down
 
 ## Step 4: Reverse proxy with Traefik
 
+We have modified the **docker-compose.yml** file to include the reverse proxy with Traefik as a service.
+
+More specifically, we removed ports configurations from the static-web-server and api-server services, then added the treafik
+service.
+
+We also added labels to the static-web-server and api-server services to specify the rules for Traefik.
+
+```yaml
+
 ## Step 5: Scalability and load balancing
 
 ## Step 6: Load balancing with round-robin and sticky sessions
