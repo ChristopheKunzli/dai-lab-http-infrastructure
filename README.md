@@ -74,7 +74,9 @@ docker-compose down
 
 ## Step 3: HTTP API server
 
-To connect the Client and the server, we have created an httpserver folder. The ```Main.java``` file contains the routes :  
+To connect the Client and the server, we have created an httpserver folder. The ```Main.java``` file contains the
+routes :
+
 ```code
 app.get("/api/quotes", quoteController::getAll);
 app.get("/api/quotes/{id}", quoteController::getOne);
@@ -83,9 +85,11 @@ app.put("/api/quotes/{id}", quoteController::update);
 app.delete("/api/quotes/{id}", quoteController::delete);
 ```
 
-As it can be seen above, we are using CRUD operations using a controller. The controller implements all of the CRUD functions. It uses a Quote class as a basic object database structure.
+As it can be seen above, we are using CRUD operations using a controller. The controller implements all of the CRUD
+functions. It uses a Quote class as a basic object database structure.
 
-To support this architecture, we changed the docker-compose :  
+To support this architecture, we changed the docker-compose :
+
 ```code
   api-server:
     build:
@@ -95,7 +99,8 @@ To support this architecture, we changed the docker-compose :
       - "7000:7000"
 ```
 
-We also added a Dockerfile :  
+We also added a Dockerfile :
+
 ```code
 FROM openjdk:25-jdk-slim
 WORKDIR /app
@@ -111,14 +116,39 @@ The functionnability can also be tested with the ```crud``` command.
 
 We have modified the **docker-compose.yml** file to include the reverse proxy with Traefik as a service.
 
-More specifically, we removed ports configurations from the static-web-server and api-server services, then added the treafik
+More specifically, we removed ports configurations from the static-web-server and api-server services, then added the
+treafik
 service.
 
 We also added labels to the static-web-server and api-server services to specify the rules for Traefik.
 
-```yaml
-
 ## Step 5: Scalability and load balancing
+
+To use multiple server instances we added this to each service in the **docker-compose.yml** file:
+
+```yaml
+deploy:
+  replicas: 3
+```
+
+We can then dynamically change the number of instances with the command:
+
+```code
+docker-compose up -d --scale static-web-server=2 --scale api-server=5
+```
+
+*note*: the number of instances can be changed to any number.
+
+To check the number of instances, we can use the command `docker ps` or go to `localhost:8080` to see the Traefik
+dashboard.
+
+To check logs of a service (in order to see which instance is being used), we can use the command:
+
+```code
+docker service logs static-web-server
+```
+
+*note*: the service name can be changed to any service.
 
 ## Step 6: Load balancing with round-robin and sticky sessions
 
