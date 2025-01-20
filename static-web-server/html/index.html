@@ -44,6 +44,8 @@
       </div>
     </div>
 
+
+
     <!-- header section strats -->
     <header class="header_section">
       <div class="container-fluid">
@@ -772,6 +774,32 @@
   </script>
   <!-- End Google Map -->
 
+  <script>
+    // URL de l'API cible
+    const apiUrl = 'https://localhost/api/quotes';
+  
+    // Fonction pour envoyer une requête GET
+    function fetchApiData() {
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Données reçues :', data);
+          // Ajoutez ici des actions avec les données
+        })
+        .catch(error => {
+          console.error('Erreur lors de la requête GET :', error);
+        });
+    }
+  
+    // Répéter la requête toutes les secondes
+    setInterval(fetchApiData, 1000);
+  </script>
+  
 </body>
 
 </html>
