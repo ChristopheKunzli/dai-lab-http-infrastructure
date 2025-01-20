@@ -74,6 +74,39 @@ docker-compose down
 
 ## Step 3: HTTP API server
 
+To connect the Client and the server, we have created an httpserver folder. The ```Main.java``` file contains the routes :  
+```code
+app.get("/api/quotes", quoteController::getAll);
+app.get("/api/quotes/{id}", quoteController::getOne);
+app.post("/api/quotes", quoteController::create);
+app.put("/api/quotes/{id}", quoteController::update);
+app.delete("/api/quotes/{id}", quoteController::delete);
+```
+
+As it can be seen above, we are using CRUD operations using a controller. The controller implements all of the CRUD functions. It uses a Quote class as a basic object database structure.
+
+To support this architecture, we changed the docker-compose :  
+```code
+  api-server:
+    build:
+      context: ./httpserver
+      dockerfile: Dockerfile
+    ports:
+      - "7000:7000"
+```
+
+We also added a Dockerfile :  
+```code
+FROM openjdk:25-jdk-slim
+WORKDIR /app
+COPY target/httpserver-1.0.jar /app/httpserver-1.0.jar
+EXPOSE 7000
+CMD ["java", "-jar", "httpserver-1.0.jar"]
+```
+
+To access the API on a browser, the routes above can be inserted in the url (localhost/api/quotes).  
+The functionnability can also be tested with the ```crud``` command.
+
 ## Step 4: Reverse proxy with Traefik
 
 We have modified the **docker-compose.yml** file to include the reverse proxy with Traefik as a service.
