@@ -166,3 +166,11 @@ same server answers.
 
 ## Step 7: Securing Traefik with HTTPS
 
+We started by creating a self-signed certificate with the command:
+
+```code
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+```
+
+Then we modified docker-compose.yml to use the certificate:
+
