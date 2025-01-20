@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/httpserver-1.0.jar /app/httpserver-1.0.jar
 
 # Exposer le port de l'application
-EXPOSE 7000
+EXPOSE 8080
 
 # Démarrer l'application
-CMD ["java", "-jar", "httpserver-1.0.jar"]
+CMD ["java", "-jar", "httpserver-1.0.jar", "8080"]

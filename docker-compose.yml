@@ -11,4 +11,4 @@ services:
       context: ./httpserver
       dockerfile: Dockerfile
     ports:
-      - "7000:7000"
+      - "8080:8080"

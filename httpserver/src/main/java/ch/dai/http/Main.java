@@ -1,9 +1,10 @@
 package ch.dai.http;
+
 import io.javalin.Javalin;
 
 public class Main {
     public static void main(String[] args) {
-        Javalin app = Javalin.create().start(7000);
+        Javalin app = Javalin.create().start(Integer.parseInt(args[0]));
         QuoteController quoteController = new QuoteController();
 
         app.get("/api/quotes", quoteController::getAll);
