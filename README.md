@@ -152,5 +152,17 @@ docker service logs static-web-server
 
 ## Step 6: Load balancing with round-robin and sticky sessions
 
+We added these 2 labels to the api-server service in the **docker-compose.yml** file:
+
+```yaml
+- "traefik.http.services.api.loadbalancer.sticky.cookie=true"
+- "traefik.http.services.api.loadbalancer.sticky.cookie.name=myStickyCookie"
+```
+
+The first label is used to enable sticky sessions, and the second is used to specify the name of the cookie.
+
+To test that sticky sessions are used for the api we can simply send multiple requests and check in the logs that the
+same server answers.
+
 ## Step 7: Securing Traefik with HTTPS
 
