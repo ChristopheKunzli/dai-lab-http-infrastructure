@@ -134,7 +134,7 @@ deploy:
 We can then dynamically change the number of instances with the command:
 
 ```code
-docker-compose up -d --scale static-web-server=2 --scale api-server=5
+docker-compose up -d --no-recreate --scale static-web-server=2 --scale api-server=5
 ```
 
 *note*: the number of instances can be changed to any number.
