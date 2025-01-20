@@ -142,7 +142,7 @@ docker-compose up -d --no-recreate --scale static-web-server=2 --scale api-serve
 To check the number of instances, we can use the command `docker ps` or go to `localhost:8080` to see the Traefik
 dashboard.
 
-To check logs of a service (in order to see which instance is being used), we can use the command:
+To check logs of a service (in order to see which instance was used after a request), we can use the command:
 
 ```code
 docker service logs static-web-server
