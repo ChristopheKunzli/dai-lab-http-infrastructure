@@ -840,8 +840,26 @@
             });
     }
 
+    const authors = Array.from({length: 10}, (_, i) => `Auteur ${i + 4}`);
+    const quotes = Array.from({length: 10}, (_, i) => `Quote ${i + 4}`);
+
+    function sendNewApiData() {
+        if (!authors.length || !quotes.length) return;
+
+        const randIdx = Math.floor(Math.random() * authors.length);
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({author: authors[randIdx], content: quotes[randIdx]})
+        });
+
+        authors.splice(randIdx, 1);
+        quotes.splice(randIdx, 1);
+    }
+
     // Répéter la requête toutes les secondes
     setInterval(fetchApiData, 1000);
+    setInterval(sendNewApiData, 5000);
 </script>
 
 </body>

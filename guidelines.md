@@ -283,8 +283,8 @@ If it does not work, go to the Traefik dashboard and check the configuration of 
 
 ### Acceptance criteria
 
-- [ ] You can do a demo where you show that the static and dynamic servers are accessible through HTTPS.
-- [ ] You have **documented** your configuration in your report.
+- [X] You can do a demo where you show that the static and dynamic servers are accessible through HTTPS.
+- [X] You have **documented** your configuration in your report.
 
 Optional steps
 ==============
@@ -325,6 +325,6 @@ JQuery if you prefer.
 
 ### Acceptance criteria
 
-- [ ] You have added JavaScript code to your static Web page to make at least a GET request to the API server.
-- [ ] You can do a demo where you show that the API is called and the result is displayed on the page.
-- [ ] You have **documented** your implementation in your report.
+- [X] You have added JavaScript code to your static Web page to make at least a GET request to the API server.
+- [X] You can do a demo where you show that the API is called and the result is displayed on the page.
+- [X] You have **documented** your implementation in your report.

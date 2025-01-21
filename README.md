@@ -174,3 +174,14 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 
 Then we modified docker-compose.yml to use the certificate
 
+## Optional step 2: Integration API - static Web site
+
+We successfully integrated the API with the static web site. The API is used to get the quotes and display them on the
+website.
+
+Also, the website sends post requests every 5 seconds to the API to create a new quote. (Just for demonstration
+purposes)
+
+This was done using the fetch API in JavaScript. The code can be found to the bottom of the
+**static-web-server/html/index.html** file.
+
