@@ -304,9 +304,9 @@ dynamically. You should be able to list running containers, start/stop them and 
 
 ### Acceptance criteria
 
-- [ ] You can do a demo to show the Management UI and manage the containers of your infrastructure.
-- [ ] You have **documented** how to use your solution.
-- [ ] You have **documented** your configuration in your report.
+- [X] You can do a demo to show the Management UI and manage the containers of your infrastructure.
+- [X] You have **documented** how to use your solution.
+- [X] You have **documented** your configuration in your report.
 
 Optional step 2: Integration API - static Web site
 --------------------------------------------------

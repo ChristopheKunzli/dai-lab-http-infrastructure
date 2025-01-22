@@ -174,6 +174,40 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 
 Then we modified docker-compose.yml to use the certificate
 
+## Optional step 1: Management UI
+
+We chose to use portainer as a management UI.
+
+### Configure portainer
+
+To use portainer, we add it as a service to the **docker-compose.yml** file. Running on port 9000.
+
+```yaml
+  portainer:
+    image: portainer/portainer-ce
+    command: -H unix:///var/run/docker.sock
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  volumes:
+    portainer_data:
+```
+
+### How to use
+
+First start the architecture as usual with:
+
+```code
+docker-compose up --build -d
+```
+
+Then go to `localhost:9000` (http, not https) in your browser. You will be asked to create an admin user. After that,
+click on the only environment that shows up, and you will see the services running. Then, click on the `container` tab
+to see the containers. From there you are free to manage the containers (stop, delete, create new ones). 
+
 ## Optional step 2: Integration API - static Web site
 
 We successfully integrated the API with the static web site. The API is used to get the quotes and display them on the
