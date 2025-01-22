@@ -96,7 +96,7 @@ To support this architecture, we changed the docker-compose :
       context: ./httpserver
       dockerfile: Dockerfile
     ports:
-      - "7000:7000"
+      - "8080:8080"
 ```
 
 We also added a Dockerfile :
@@ -105,7 +105,7 @@ We also added a Dockerfile :
 FROM openjdk:25-jdk-slim
 WORKDIR /app
 COPY target/httpserver-1.0.jar /app/httpserver-1.0.jar
-EXPOSE 7000
+EXPOSE 8080
 CMD ["java", "-jar", "httpserver-1.0.jar"]
 ```
 
@@ -117,14 +117,13 @@ The functionnability can also be tested with the ```crud``` command.
 We have modified the **docker-compose.yml** file to include the reverse proxy with Traefik as a service.
 
 More specifically, we removed ports configurations from the static-web-server and api-server services, then added the
-treafik
-service.
+treafik service.
 
 We also added labels to the static-web-server and api-server services to specify the rules for Traefik.
 
 ## Step 5: Scalability and load balancing
 
-To use multiple server instances we added this to each service in the **docker-compose.yml** file:
+To use multiple server instances we added this to each service (except traefik) in the **docker-compose.yml** file:
 
 ```yaml
 deploy:
@@ -134,7 +133,7 @@ deploy:
 We can then dynamically change the number of instances with the command:
 
 ```code
-docker-compose up -d --no-recreate --scale static-web-server=2 --scale api-server=5
+docker compose up -d --no-recreate --scale static-web-server=2 --scale api-server=5
 ```
 
 *note*: the number of instances can be changed to any number.
@@ -208,7 +207,7 @@ docker-compose up --build -d
 
 Then go to `localhost:9000` (http, not https) in your browser. You will be asked to create an admin user. After that,
 click on the only environment that shows up, and you will see the services running. Then, click on the `container` tab
-to see the containers. From there you are free to manage the containers (stop, delete, create new ones). 
+to see the containers. From there you are free to manage the containers (stop, start, delete, create new ones, ...).
 
 ## Optional step 2: Integration API - static Web site
 
